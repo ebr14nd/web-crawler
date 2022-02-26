@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: wc-server
+  name: wc-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wc-server
+  template:
+    metadata:
+      labels:
+        app: wc-server
+    spec:
+      containers:
+      - image: ebr41nd/wc-server
+        name: wc-server

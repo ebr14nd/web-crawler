@@ -1,0 +1,12 @@
+FROM golang:1.17 as BUILD
+
+WORKDIR /wc-client
+
+COPY . .
+RUN go mod download
+RUN cd cmd/wcclient && go build
+
+FROM gcr.io/distroless/base
+
+COPY --from=BUILD /wc-client/cmd/wcclient/wcclient .
+ENTRYPOINT ["/wcclient"]

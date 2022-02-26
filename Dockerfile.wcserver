@@ -1,0 +1,12 @@
+FROM golang:1.17 as BUILD
+
+WORKDIR /wc-server
+
+COPY . .
+RUN go mod download
+RUN cd cmd/wcserver && go build
+
+FROM gcr.io/distroless/base
+
+COPY --from=BUILD /wc-server/cmd/wcserver/wcserver .
+ENTRYPOINT ["/wcserver"]

@@ -1,0 +1,19 @@
+{
+  "url": "http://example.com",
+  "links": [
+    {
+      "url": "about/",
+      "links": [
+        {
+          "url": "more"
+        },
+        {
+          "url": "more"
+        },
+        {
+          "url": "more"
+        }
+      ]
+    }
+  ]
+}
